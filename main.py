@@ -57,7 +57,7 @@ def uploadFile(filename,currentBits,totalBits,speed,time,args):
 
 def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jdb=None):
     try:
-        bot.editMessageText(message,'🤜Preparando Para Subir☁...')
+        bot.editMessageText(message,'☁️Preparando para subir☁')
         evidence = None
         fileid = None
         user_info = jdb.get_user(update.message.sender.username)
@@ -330,7 +330,7 @@ def onmessage(update,bot:ObigramClient):
                         user_info['proxy'] = ''
                         statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
                         bot.sendMessage(update.message.chat.id,statInfo)
-                return
+                return                
             if '/view_proxy' in msgText:
                 try:
                     getUser = user_info
@@ -342,20 +342,17 @@ def onmessage(update,bot:ObigramClient):
                     if user_info:
                         proxy = user_info['proxy']
                         bot.sendMessage(update.message.chat.id,proxy)
-                return
-                
+                return                
             if '/crypt' in msgText:
                 proxy_sms = str(msgText).split(' ')[1]
                 proxy = S5Crypto.encrypt(f'{proxy_sms}')
                 bot.sendMessage(update.message.chat.id, f'🔒Encriptado Completado:\n{proxy}')
-                return
-            
+                return            
             if '/decrypt' in msgText:
                 proxy_sms = str(msgText).split(' ')[1]
                 proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
                 bot.sendMessage(update.message.chat.id, f'🔓Desencriptado Completado:\n{proxy_de}')
-                return
-                
+                return                
         if '/tutorial' in msgText:
             tuto = open('tuto.txt','r')
             bot.sendMessage(update.message.chat.id,tuto.read())
@@ -624,7 +621,7 @@ def onmessage(update,bot:ObigramClient):
                             evfile = client.getEvidences()[0]
                             client.deleteEvidence(evfile)
                             eliminados += 1
-                            bot.sendMessage(update.message.chat.id,'Archivo ' +str(eliminados)+' Borrado 🦶')                            
+                            bot.sendMessage(update.message.chat.id,'🗑️Archivo ' +str(eliminados)+' Borrado 🗑️')                            
                     else:
                         bot.sendMessage(update.message.chat.id,'❌Error y Causas🧐\n1-Revise su Cuenta\n2-Servidor Desabilitado: '+client.path)
                 bot.sendMessage(update.message.chat.id,'Se eliminaron Completamente los  50 Elementos')
