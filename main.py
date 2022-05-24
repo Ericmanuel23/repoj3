@@ -331,7 +331,7 @@ def onmessage(update,bot:ObigramClient):
         # end
 
         # comandos de usuario
-        if '/view_proxy' in msgText:
+            if '/view_proxy' in msgText:
                 try:
                     getUser = user_info
                     
@@ -344,7 +344,7 @@ def onmessage(update,bot:ObigramClient):
                         bot.sendMessage(update.message.chat.id,proxy)
                 return
                 
-        if '/crypt' in msgText:
+            if '/crypt' in msgText:
                 proxy_sms = str(msgText).split(' ')[1]
                 proxy = S5Crypto.encrypt(f'{proxy_sms}')
                 bot.sendMessage(update.message.chat.id, f'🔒Encriptado Completado:\n{proxy}')
@@ -355,6 +355,7 @@ def onmessage(update,bot:ObigramClient):
                 proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
                 bot.sendMessage(update.message.chat.id, f'🔓Desencriptado Completado:\n{proxy_de}')
                 return
+                
         if '/tutorial' in msgText:
             tuto = open('tuto.txt','r')
             bot.sendMessage(update.message.chat.id,tuto.read())
@@ -592,7 +593,7 @@ def onmessage(update,bot:ObigramClient):
                 evfile = client.getEvidences()[findex]
                 client.deleteEvidence(evfile)
                 client.logout()
-                bot.editMessageText(message,'Archivo Borrado 🦶')
+                bot.editMessageText(message,'🗑️Archivo Borrado 🗑️')
             else:
                 bot.editMessageText(message,'❌Error y Causas🧐\n1-Revise su Cuenta\n2-Servidor Desabilitado: '+client.path)
         elif '/eli' in msgText and user_info['cloudtype']=='moodle':
