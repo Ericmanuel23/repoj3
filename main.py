@@ -259,22 +259,7 @@ def onmessage(update,bot:ObigramClient):
         try: msgText = update.message.text
         except:pass
 
-        # comandos de admin
-            if '/off_proxy' in msgText:
-                try:
-                    getUser = user_info
-                    if getUser:
-                        getUser['proxy'] = ''
-                        jdb.save_data_user(username,getUser)
-                        jdb.save()
-                        succes_msg = '☑️Proxy desactivado☑️'
-                        bot.sendMessage(update.message.chat.id,succes_msg)
-                except:
-                    if user_info:
-                        user_info['proxy'] = ''
-                        statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
-                        bot.sendMessage(update.message.chat.id,statInfo)
-                return
+        # comandos de ad 
         if '/adduser' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
@@ -331,6 +316,22 @@ def onmessage(update,bot:ObigramClient):
         # end
 
         # comandos de usuario
+            if '/off_proxy' in msgText:
+                try:
+                    getUser = user_info
+                    if getUser:
+                        getUser['proxy'] = ''
+                        jdb.save_data_user(username,getUser)
+                        jdb.save()
+                        succes_msg = '☑️Proxy desactivado☑️'
+                        bot.sendMessage(update.message.chat.id,succes_msg)
+                except:
+                    if user_info:
+                        user_info['proxy'] = ''
+                        statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
+                        bot.sendMessage(update.message.chat.id,statInfo)
+                return
+
             if '/view_proxy' in msgText:
                 try:
                     getUser = user_info
