@@ -260,21 +260,6 @@ def onmessage(update,bot:ObigramClient):
         except:pass
 
         # comandos de admin
-            if '/off_proxy' in msgText:
-                try:
-                    getUser = user_info
-                    if getUser:
-                        getUser['proxy'] = ''
-                        jdb.save_data_user(username,getUser)
-                        jdb.save()
-                        succes_msg = '☑️Proxy desactivado☑️'
-                        bot.sendMessage(update.message.chat.id,succes_msg)
-                except:
-                    if user_info:
-                        user_info['proxy'] = ''
-                        statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
-                        bot.sendMessage(update.message.chat.id,statInfo)
-                return
         if '/adduser' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
@@ -331,6 +316,21 @@ def onmessage(update,bot:ObigramClient):
         # end
 
         # comandos de usuario
+            if '/off_proxy' in msgText:
+                try:
+                    getUser = user_info
+                    if getUser:
+                        getUser['proxy'] = ''
+                        jdb.save_data_user(username,getUser)
+                        jdb.save()
+                        succes_msg = '☑️Proxy desactivado☑️'
+                        bot.sendMessage(update.message.chat.id,succes_msg)
+                except:
+                    if user_info:
+                        user_info['proxy'] = ''
+                        statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
+                        bot.sendMessage(update.message.chat.id,statInfo)
+                return
             if '/view_proxy' in msgText:
                 try:
                     getUser = user_info
@@ -361,7 +361,7 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id,tuto.read())
             tuto.close()
             return
-        if '/info' in msgText:
+        if '/myuser' in msgText:
             getUser = user_info
             if getUser:
                 statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
