@@ -259,7 +259,22 @@ def onmessage(update,bot:ObigramClient):
         try: msgText = update.message.text
         except:pass
 
-        # comandos de ad 
+        # comandos de admin
+            if '/off_proxy' in msgText:
+                try:
+                    getUser = user_info
+                    if getUser:
+                        getUser['proxy'] = ''
+                        jdb.save_data_user(username,getUser)
+                        jdb.save()
+                        succes_msg = '☑️Proxy desactivado☑️'
+                        bot.sendMessage(update.message.chat.id,succes_msg)
+                except:
+                    if user_info:
+                        user_info['proxy'] = ''
+                        statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
+                        bot.sendMessage(update.message.chat.id,statInfo)
+                return
         if '/adduser' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
@@ -316,22 +331,6 @@ def onmessage(update,bot:ObigramClient):
         # end
 
         # comandos de usuario
-            if '/off_proxy' in msgText:
-                try:
-                    getUser = user_info
-                    if getUser:
-                        getUser['proxy'] = ''
-                        jdb.save_data_user(username,getUser)
-                        jdb.save()
-                        succes_msg = '☑️Proxy desactivado☑️'
-                        bot.sendMessage(update.message.chat.id,succes_msg)
-                except:
-                    if user_info:
-                        user_info['proxy'] = ''
-                        statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
-                        bot.sendMessage(update.message.chat.id,statInfo)
-                return
-
             if '/view_proxy' in msgText:
                 try:
                     getUser = user_info
@@ -659,7 +658,7 @@ def main():
     bot_token = os.environ.get('bot_token')
 
     #set in debug
-    #bot_token = ''
+    #bot_token = '5388781756:AAG7g924-rM3VTbIJLphdhzzxy579Q-k7EQ'
 
     bot = ObigramClient(bot_token)
     bot.onMessage(onmessage)
