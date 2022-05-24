@@ -1,8 +1,2 @@
-# DEploy To Heroku
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/diago8888/creeperbotupload)
-
-
-<h2>Soy un código de un bot de subida me llamó Bot Creeper</h2>
-
-<img src="IMG_20220516_184102_387.jpg">
-<h5>Puedes encontrarme en Telegram https://t.me/diago8888 </h5>
+# Deploy Directo (Heroku)
+[![Heroku Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/lidia50torres50/directo-calendar)

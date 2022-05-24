@@ -30,59 +30,62 @@ def porcent(index,max):
 
 def createDownloading(filename,totalBits,currentBits,speed,time,tid=''):
     msg = '📥Descargando... \n\n'
-    msg+= '📱Nombre: ' + str(filename)+'\n'
-    msg+= '💾Tamaño Total: ' + str(sizeof_fmt(totalBits))+'\n'
-    msg+= '📥Descargado: ' + str(sizeof_fmt(currentBits))+'\n'
-    msg+= '⚡Velocidad: ' + str(sizeof_fmt(speed))+'/s\n'
-    msg+= '🕛Tiempo: ' + str(datetime.timedelta(seconds=int(time))) +'\n\n'
+    msg+= '🔖Nombre: ' + str(filename)+'\n'
+    msg+= '🗂Tamaño Total: ' + str(sizeof_fmt(totalBits))+'\n'
+    msg+= '🗂Descargado: ' + str(sizeof_fmt(currentBits))+'\n'
+    msg+= '📶Velocidad: ' + str(sizeof_fmt(speed))+'/s\n'
+    msg+= '🕐Tiempo: ' + str(datetime.timedelta(seconds=int(time))) +'\n\n'
 
     msg = '📡 Descargando Archivo....\n\n'
-    msg += '📱Nombre: '+filename+'\n'
+    msg += '📦 Archivo: '+filename+'\n'
     msg += text_progres(currentBits,totalBits)+'\n'
-    msg += '💯Porcentaje: '+str(porcent(currentBits,totalBits))+'%\n\n'
-    msg += '💾Total: '+sizeof_fmt(totalBits)+'\n\n'
-    msg += '📥Descargado: '+sizeof_fmt(currentBits)+'\n\n'
-    msg += '⚡Velocidad: '+sizeof_fmt(speed)+'/s\n\n'
-    msg += '🕛Tiempo de Descarga: '+str(datetime.timedelta(seconds=int(time)))+'s\n\n'
+    msg += '📊 Porcentaje: '+str(porcent(currentBits,totalBits))+'%\n\n'
+    msg += '🗂 Total: '+sizeof_fmt(totalBits)+'\n\n'
+    msg += '🗂 Descargado: '+sizeof_fmt(currentBits)+'\n\n'
+    msg += '📶 Velocidad: '+sizeof_fmt(speed)+'/s\n\n'
+    msg += '🕐 Tiempo de Descarga: '+str(datetime.timedelta(seconds=int(time)))+'s\n\n'
 
     if tid!='':
         msg+= '/cancel_' + tid
     return msg
 def createUploading(filename,totalBits,currentBits,speed,time,originalname=''):
-    msg = '📤Subiendo A La Nube☁... \n\n'
-    msg+= '📱Nombre: ' + str(filename)+'\n'
+    msg = '⏫Subiendo A La Nube☁... \n\n'
+    msg+= '🔖Nombre: ' + str(filename)+'\n'
     if originalname!='':
         msg = str(msg).replace(filename,originalname)
-        msg+= '📤Subiendo: ' + str(filename)+'\n'
-    msg+= '💾Tamaño Total: ' + str(sizeof_fmt(totalBits))+'\n'
+        msg+= '⏫Subiendo: ' + str(filename)+'\n'
+    msg+= '🗂Tamaño Total: ' + str(sizeof_fmt(totalBits))+'\n'
     msg+= '🗂Subido: ' + str(sizeof_fmt(currentBits))+'\n'
-    msg+= '⚡Velocidad: ' + str(sizeof_fmt(speed))+'/s\n'
-    msg+= '🕛Tiempo: ' + str(datetime.timedelta(seconds=int(time))) +'\n'
+    msg+= '📶Velocidad: ' + str(sizeof_fmt(speed))+'/s\n'
+    msg+= '🕐Tiempo: ' + str(datetime.timedelta(seconds=int(time))) +'\n'
 
-    msg = '📤 Subiendo A La Nube☁...\n\n'
-    msg += '📱 Nombre: '+filename+'\n'
+    msg = '⏫ Subiendo A La Nube☁...\n\n'
+    msg += '🔖 Nombre: '+filename+'\n'
     if originalname!='':
         msg = str(msg).replace(filename,originalname)
-        msg+= '📑Parte: ' + str(filename)+'\n'
+        msg+= '🔖 Parte: ' + str(filename)+'\n'
     msg += text_progres(currentBits,totalBits)+'\n'
-    msg += '💯Porcentaje: '+str(porcent(currentBits,totalBits))+'%\n\n'
-    msg += '💾 Total: '+sizeof_fmt(totalBits)+'\n\n'
-    msg += '📥 Descargado: '+sizeof_fmt(currentBits)+'\n\n'
-    msg += '⚡ Velocidad: '+sizeof_fmt(speed)+'/s\n\n'
-    msg += '🕛Tiempo de Descarga: '+str(datetime.timedelta(seconds=int(time)))+'s\n\n'
+    msg += '📊 Porcentaje: '+str(porcent(currentBits,totalBits))+'%\n\n'
+    msg += '🗂 Total: '+sizeof_fmt(totalBits)+'\n\n'
+    msg += '🗂 Descargado: '+sizeof_fmt(currentBits)+'\n\n'
+    msg += '📶 Velocidad: '+sizeof_fmt(speed)+'/s\n\n'
+    msg += '🕐 Tiempo de Descarga: '+str(datetime.timedelta(seconds=int(time)))+'s\n\n'
 
     return msg
 def createCompresing(filename,filesize,splitsize):
     msg = '📚Comprimiendo... \n\n'
-    msg+= '📱Nombre: ' + str(filename)+'\n'
-    msg+= '💾Tamaño Total: ' + str(sizeof_fmt(filesize))+'\n'
+    msg+= '🔖Nombre: ' + str(filename)+'\n'
+    msg+= '🗂Tamaño Total: ' + str(sizeof_fmt(filesize))+'\n'
     msg+= '📂Tamaño Partes: ' + str(sizeof_fmt(splitsize))+'\n'
-    msg+= '📑Cantidad Partes: ' + str(round(int(filesize/splitsize)+1,1))+'\n\n'
+    msg+= '💾Cantidad Partes: ' + str(round(int(filesize/splitsize)+1,1))+'\n\n'
     return msg
 def createFinishUploading(filename,filesize,split_size,current,count,findex):
-    msg= '📱' + str(filename)+'📱\n'
-    msg+= '💾Tamaño: ' + str(sizeof_fmt(filesize))+'\n'
-    msg+= '📑Partes: ' + str(current) + '/' + str(count) +'\n'
+    msg = '📌Proceso Finalizado📌\n\n'
+    msg+= '🔖Nombre: ' + str(filename)+'\n'
+    msg+= '🗂Tamaño Total: ' + str(sizeof_fmt(filesize))+'\n'
+    msg+= '📂Tamaño Partes: ' + str(sizeof_fmt(split_size))+'\n'
+    msg+= '📤Partes Subidas: ' + str(current) + '/' + str(count) +'\n\n'
+    msg+= '🗑Borrar Archivo: ' + '/del_'+str(findex)
     return msg
 
 def createFileMsg(filename,files):
@@ -117,7 +120,7 @@ def createStat(username,userdata,isadmin):
     msg = '⚙️Condiguraciones De Usuario⚙️\n\n'
     msg+= '🔖Nombre: @' + str(username)+'\n'
     msg+= '📑User: ' + str(userdata['moodle_user'])+'\n'
-    msg+= '🗳Password: ' + str(userdata['moodle_password'])+'\n'
+    msg+= '🗳Password: ' + str(userdata['moodle_password']) +'\n'
     msg+= '📡Host: ' + str(userdata['moodle_host'])+'\n'
     if userdata['cloudtype'] == 'moodle':
         msg+= '🏷RepoID: ' + str(userdata['moodle_repo_id'])+'\n'
@@ -126,16 +129,16 @@ def createStat(username,userdata,isadmin):
     if userdata['cloudtype'] == 'cloud':
         msg+= '🗂Dir: /' + str(userdata['dir'])+'\n'
     msg+= '📚Tamaño de Zips : ' + sizeof_fmt(userdata['zips']*1024*1024) + '\n\n'
-    msgAdmin = 'No'
+    msgAdmin = '❌'
     if isadmin:
-        msgAdmin = 'Si'
+        msgAdmin = '✅'
     msg+= '🦾Admin : ' + msgAdmin + '\n'
-    proxy = 'NO'
+    proxy = '☑️'
     if userdata['proxy'] !='':
-       proxy = 'SI'
-    tokenize = 'NO'
+       proxy = '✅'
+    tokenize = '❌'
     if userdata['tokenize']!=0:
-       tokenize = 'SI'
+       tokenize = '✅'
     msg+= '🔌Proxy : ' + proxy + '\n'
     msg+= '🔮Tokenize : ' + tokenize + '\n\n'
     msg+= '⚙️Configurar Moodle⚙️\n🤜Ejemplo /account user,password👀'
