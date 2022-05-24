@@ -260,61 +260,6 @@ def onmessage(update,bot:ObigramClient):
         except:pass
 
         # comandos de admin
-        if '/upload' in text:
-        enlace = str(text).split(' ')[1]
-        tiempo = str(text).split(' ')[2]
-        unidad = str(text).split(' ')[3]
-        unidad_list = ["s","S","m","M","h","H"]
-        unidad_list_s = ["s","S"]
-        unidad_list_m = ["m","M"]
-        unidad_list_h = ["h","H"]
-        if unidad in unidad_list :
-            if unidad in unidad_list_s:
-                pr_tiempo = int(tiempo)
-                try :
-                    if int(tiempo) > 1 :
-                        pr_unidad = "segundos"
-                    else : pr_unidad = "segundo"
-                except Exception as ex:print(str(ex))
-            if unidad in unidad_list_m:
-                pr_tiempo = int(tiempo) * 60
-                try :
-                    if int(tiempo) > 1 :
-                        pr_unidad = "minutos"
-                    else : pr_unidad = "minuto"
-                except Exception as ex:print(str(ex))
-            if unidad in unidad_list_h:
-                pr_tiempo = (int(tiempo) * 60) * 60
-                try :
-                    if int(tiempo) > 1 :
-                        pr_unidad = "horas"
-                    else : pr_unidad = "hora"
-                except Exception as ex:print(str(ex))
-            if pr_tiempo < 86401 and pr_tiempo > 14 :
-                    calculo = int(pr_tiempo) / 2
-                    bot.sendMessage(chat_id=update.message.chat.id,text="Ok, Tarea Programada para dentro de " + tiempo + " " + pr_unidad + "\nEspere Pacientemente....")
-                    msg_id=int(update.message.message_id) + 1
-                    start_msg = "Empezando a Descargar la tarea programada :\n\n" + enlace + "\n\nGracias por Esperar"
-                    try:
-                        if str(calculo).__contains__ ("."):calculo_mostrar = str(calculo).split('.')[0]
-                    except: calculo_mostrar = calculo
-                    time.sleep(calculo)
-                    try:
-                        if int(calculo) > int(tiempo):
-                            if unidad == "m" or unidad == "M":
-                                prf_unidad = "segundos"
-                            if unidad == "h" or unidad == "H":
-                                prf_unidad = "minutos"
-                        else:prf_unidad = pr_unidad
-                    except Exception as ex:print(str(ex))
-                    try :bot.editMessageText(chat_id=update.message.chat.id,message_id=msg_id,text="Empezamos en " + str(calculo_mostrar) + " " + prf_unidad)
-                    except Exception as ex:print(str(ex))
-                    time.sleep(calculo)
-                    try :bot.editMessageText(chat_id=update.message.chat.id,message_id=msg_id,text=start_msg)
-                    except:bot.sendMessage(update.message.chat.id,start_msg)
-            else: bot.sendMessage(update.message.chat.id,"El Tiempo tiene que estar entre 15 Segundos y 24 Horas")
-        elif unidad not in unidad_list :
-            bot.sendMessage(chat_id=update.message.chat.id,text="Manda una Unidad Válida : \ns , S - Segundos\nm , M - Minutos\nh , H - Horas")
         if '/off_proxy' in msgText:
                 try:
                     getUser = user_info
