@@ -319,7 +319,7 @@ def onmessage(update,bot:ObigramClient):
         if '/view_proxy' in msgText:
         	if proxy == '':
            	bot.sendMessage(update.message.chat.id,'✅No tienes proxy configurado✅')
-            try:
+               try:
 
 
                 getUser = user_info
