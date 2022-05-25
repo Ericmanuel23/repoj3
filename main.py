@@ -57,7 +57,7 @@ def uploadFile(filename,currentBits,totalBits,speed,time,args):
 
 def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jdb=None):
     try:
-        bot.editMessageText(message,'☁️Preparando para subir☁')
+        bot.editMessageText(message,'🤜Preparando Para Subir☁...')
         evidence = None
         fileid = None
         user_info = jdb.get_user(update.message.sender.username)
@@ -169,7 +169,7 @@ def processFile(update,bot,message,file,thread=None,jdb=None):
     else:
         client = processUploadFiles(file,file_size,[file],update,bot,message,jdb=jdb)
         file_upload_count = 1
-    bot.editMessageText(message,'📄Preparando Archivo📄...')
+    bot.editMessageText(message,'🤜Preparando Archivo📄...')
     evidname = ''
     files = []
     if client:
@@ -248,7 +248,7 @@ def onmessage(update,bot:ObigramClient):
                 user_info = jdb.get_user(username)
                 jdb.save()
         else:
-            mensaje = "❌No tienes Acceso❌.\n😉Por favor pontacta con mi programador @diago8888\n"
+            mensaje = "❌No tienes Acceso❌.\nPor favor contacta con mi programador @diago8888\n"
             intento_msg = "💢El usuario @"+username+ " ha intentando usar el bot sin permiso💢"
             bot.sendMessage(update.message.chat.id,mensaje)
             bot.sendMessage(958475767,intento_msg)
@@ -267,7 +267,7 @@ def onmessage(update,bot:ObigramClient):
                     user = str(msgText).split(' ')[1]
                     jdb.create_user(user)
                     jdb.save()
-                    msg = '😃Genial @'+user+' ahora tiene acceso al bot👍'
+                    msg = '✅Genial @'+user+' ahora tiene acceso al bot✅'
                     bot.sendMessage(update.message.chat.id,msg)
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /adduser username❌')
@@ -281,7 +281,7 @@ def onmessage(update,bot:ObigramClient):
                     user = str(msgText).split(' ')[1]
                     jdb.create_admin(user)
                     jdb.save()
-                    msg = '😃Genial @'+user+' ahora es Admin del bot👍'
+                    msg = '👑Genial @'+user+' ahora es admin del bot👑'
                     bot.sendMessage(update.message.chat.id,msg)
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /adduser username❌')
@@ -316,49 +316,37 @@ def onmessage(update,bot:ObigramClient):
         # end
 
         # comandos de usuario
-            if '/off_proxy' in msgText:
-                try:
-                    getUser = user_info
-                    if getUser:
-                        getUser['proxy'] = ''
-                        jdb.save_data_user(username,getUser)
-                        jdb.save()
-                        succes_msg = '☑️Proxy desactivado☑️'
-                        bot.sendMessage(update.message.chat.id,succes_msg)
-                except:
-                    if user_info:
-                        user_info['proxy'] = ''
-                        statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
-                        bot.sendMessage(update.message.chat.id,statInfo)
-                return                
-            if '/view_proxy' in msgText:
-                try:
-                    getUser = user_info
-                    
-                    if getUser:
-                        proxy = getUser['proxy']
-                        bot.sendMessage(update.message.chat.id,proxy)
-                except:
-                    if user_info:
-                        proxy = user_info['proxy']
-                        bot.sendMessage(update.message.chat.id,proxy)
-                return                
-            if '/crypt' in msgText:
-                proxy_sms = str(msgText).split(' ')[1]
-                proxy = S5Crypto.encrypt(f'{proxy_sms}')
-                bot.sendMessage(update.message.chat.id, f'🔒Encriptado Completado:\n{proxy}')
-                return            
-            if '/decrypt' in msgText:
-                proxy_sms = str(msgText).split(' ')[1]
-                proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
-                bot.sendMessage(update.message.chat.id, f'🔓Desencriptado Completado:\n{proxy_de}')
-                return                
+        if '/off_proxy' in msgText:
+            try:
+                getUser = user_info
+                if getUser:
+                    getUser['proxy'] = ''
+                    jdb.save_data_user(username,getUser)
+                    jdb.save()
+                    statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
+                    bot.sendMessage(update.message.chat.id,'✅Proxy desactivado✅')
+            except:
+                if user_info:
+                    user_info['proxy'] = ''
+                    statInfo = infos.createStat(username,user_info,jdb.is_admin(username))
+                    bot.sendMessage(update.message.chat.id,'✅Proxy desactivado✅')
+            return
+        if '/crypt' in msgText:
+            proxy_sms = str(msgText).split(' ')[1]
+            proxy = S5Crypto.encrypt(f'{proxy_sms}')
+            bot.sendMessage(update.message.chat.id, f'🔒Proxy encryptado🔒:\n{proxy}')
+            return            
+        if '/decrypt' in msgText:
+            proxy_sms = str(msgText).split(' ')[1]
+            proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
+            bot.sendMessage(update.message.chat.id, f'🔓Proxy decryptado🔓:\n{proxy_de}')
+            return
         if '/tutorial' in msgText:
             tuto = open('tuto.txt','r')
             bot.sendMessage(update.message.chat.id,tuto.read())
             tuto.close()
             return
-        if '/myuser' in msgText:
+        if '/info' in msgText:
             getUser = user_info
             if getUser:
                 statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
@@ -518,16 +506,16 @@ def onmessage(update,bot:ObigramClient):
             return
         #end
 
-        message = bot.sendMessage(update.message.chat.id,'🕰Procesando🕰...')
+        message = bot.sendMessage(update.message.chat.id,'⌛Procesando⌛')
 
         thread.store('msg',message)
 
         if '/start' in msgText:
-            start_msg = '😉Bot Creeper Uploader versión 2.0\n'
+            start_msg = '💢Bot Creeper Uploader 2.0💢\n'
             start_msg+= '🛠️Desarrollador: @diago8888\n'
             bot.editMessageText(message,start_msg)
         elif '/token' in msgText:
-            message2 = bot.editMessageText(message,'Obteniendo Token...')
+            message2 = bot.editMessageText(message,'🔗Obteniendo Token🔗')
             try:
                 proxy = ProxyCloud.parse(user_info['proxy'])
                 client = MoodleClient(user_info['moodle_user'],
@@ -590,7 +578,7 @@ def onmessage(update,bot:ObigramClient):
                 evfile = client.getEvidences()[findex]
                 client.deleteEvidence(evfile)
                 client.logout()
-                bot.editMessageText(message,'🗑️Archivo Borrado 🗑️')
+                bot.editMessageText(message,'Archivo Borrado 🦶')
             else:
                 bot.editMessageText(message,'❌Error y Causas🧐\n1-Revise su Cuenta\n2-Servidor Desabilitado: '+client.path)
         elif '/eli' in msgText and user_info['cloudtype']=='moodle':
@@ -621,7 +609,7 @@ def onmessage(update,bot:ObigramClient):
                             evfile = client.getEvidences()[0]
                             client.deleteEvidence(evfile)
                             eliminados += 1
-                            bot.sendMessage(update.message.chat.id,'🗑️Archivo ' +str(eliminados)+' Borrado 🗑️')                            
+                            bot.sendMessage(update.message.chat.id,'Archivo ' +str(eliminados)+' Borrado 🦶')                            
                     else:
                         bot.sendMessage(update.message.chat.id,'❌Error y Causas🧐\n1-Revise su Cuenta\n2-Servidor Desabilitado: '+client.path)
                 bot.sendMessage(update.message.chat.id,'Se eliminaron Completamente los  50 Elementos')
@@ -655,7 +643,7 @@ def main():
     bot_token = os.environ.get('bot_token')
 
     #set in debug
-    #bot_token = '5388781756:AAG7g924-rM3VTbIJLphdhzzxy579Q-k7EQ'
+    #bot_token = ''
 
     bot = ObigramClient(bot_token)
     bot.onMessage(onmessage)
