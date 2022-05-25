@@ -527,8 +527,8 @@ def onmessage(update,bot:ObigramClient):
         thread.store('msg',message)
 
         if '/start' in msgText:
-        	start_msg = os.environ.get('start_msg_cf')
-            bot.editMessageText(message,start_msg)
+        	start_msg_cf = os.environ.get('start_msg_cf')
+            bot.editMessageText(message,start_msg_cf)
         elif '/token' in msgText:
             message2 = bot.editMessageText(message,'🔗Obteniendo Token🔗')
             try:
