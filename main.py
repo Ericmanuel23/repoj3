@@ -316,6 +316,22 @@ def onmessage(update,bot:ObigramClient):
         # end
 
         # comandos de usuario
+        if '/view_proxy' in msgText:
+        	if proxy == '':
+           	bot.sendMessage(update.message.chat.id,'✅No tienes proxy configurado✅')
+            try:
+
+
+                getUser = user_info
+
+                if getUser:
+                    proxy = getUser['proxy']
+                    bot.sendMessage(update.message.chat.id,proxy)
+            except:
+                if user_info:
+                    proxy = user_info['proxy']
+                    bot.sendMessage(update.message.chat.id,proxy)
+            return
         if '/off_proxy' in msgText:
             try:
                 getUser = user_info
@@ -346,7 +362,7 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id,tuto.read())
             tuto.close()
             return
-        if '/info' in msgText:
+        if '/myuser' in msgText:
             getUser = user_info
             if getUser:
                 statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
@@ -511,8 +527,7 @@ def onmessage(update,bot:ObigramClient):
         thread.store('msg',message)
 
         if '/start' in msgText:
-            start_msg = '💢Bot Creeper Uploader 2.0💢\n'
-            start_msg+= '🛠️Desarrollador: @diago8888\n'
+        	start_msg = os.environ.get('start_msg_cf')
             bot.editMessageText(message,start_msg)
         elif '/token' in msgText:
             message2 = bot.editMessageText(message,'🔗Obteniendo Token🔗')
@@ -561,7 +576,7 @@ def onmessage(update,bot:ObigramClient):
                  txtname = evindex['name']+'.txt'
                  sendTxt(txtname,evindex['files'],update,bot)
                  client.logout()
-                 bot.editMessageText(message,'TxT Aqui👇')
+                 bot.editMessageText(message,'TxT Aqui??')
              else:
                 bot.editMessageText(message,'❌Error y Causas🧐\n1-Revise su Cuenta\n2-Servidor Desabilitado: '+client.path)
              pass

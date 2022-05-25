@@ -1,9 +1,13 @@
 ﻿{
-  "name": "Bot Creeper😉 Uploader⏫",
-  "description": "Bot Creeper 😉 Uploader ⏫ version 2.0",
+  "name": "Bot Creeper😉 Uploader⏫ 2.0",
+  "description": "Este es el bot creeper en su versión 20",
   "env": {
+  "start_msg_cf": {
+      "description": "Mensaje al iniciar el bot",
+      "value": "💢Bot Creeper Uploader 2.0💢\n🛠️Desarrollador: @diago8888\n"
+    },
     "tl_admin_user": {
-      "description": "Administrador del bot",
+      "description": "El Usuario de Telegram que va a administrar el bot",
       "value": ""
     },
     "bot_token": {
