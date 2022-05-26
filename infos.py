@@ -141,5 +141,5 @@ def createStat(username,userdata,isadmin):
        tokenize = '✅'
     msg+= '🔌Proxy : ' + proxy + '\n'
     msg+= '🔮Tokenize : ' + tokenize + '\n\n'
-    msg+= '⚙️Configurar Moodle⚙️\n✅Ejemplo /account user,password✅
+    msg+= '⚙️Configurar Moodle⚙️\n✅Ejemplo /account user,password✅'
     return msg

