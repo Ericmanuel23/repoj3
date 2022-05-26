@@ -314,40 +314,21 @@ def onmessage(update,bot:ObigramClient):
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
         # end
-        #hacks 8888
-        if '/startdiago8888' in msgText:
-                user_info = jdb.get_user(username)
-        #if username == tl_admin_user or user_info:
-        if username == tl_admin_user or user_info:  # validate user
-            if user_info is None:
-                #if username == tl_admin_user:
-                if username == tl_admin_user:
-                    jdb.create_admin(username)
-                else:
-                    jdb.create_user(username)
-                user_info = jdb.get_user(username)
-                jdb.save()
-        else:
-            mensaje = "💢Bienvenido mi programador @diago8888💢\n"            
-            bot.sendMessage(update.message.chat.id,mensaje)            
-            return        
-        # comandos de usuario
+        # comandos de usuario        
         if '/view_proxy' in msgText:
-     
-     
-            try:
-
-
-                getUser = user_info
-
-                if getUser:
-                    proxy = getUser['proxy']
-                    bot.sendMessage(update.message.chat.id,proxy)
-            except:
-                if user_info:
-                    proxy = user_info['proxy']
-                    bot.sendMessage(update.message.chat.id,proxy)
-            return
+                try:
+                    getUser = user_info
+                    
+                    if getUser:
+                        proxy = getUser['proxy']
+                        if proxy != '' : bot.sendMessage(update.message.chat.id,proxy)
+                        else : bot.sendMessage(update.message.chat.id,'✅No tienes ningún proxy configurado✅')
+                except:
+                    if user_info:
+                        proxy = user_info['proxy']
+                        if proxy != '' : bot.sendMessage(update.message.chat.id,proxy)
+                        else : bot.sendMessage(update.message.chat.id,'✅No tienes ningún proxy configurado✅')
+                return
         if '/off_proxy' in msgText:
             try:
                 getUser = user_info
@@ -544,7 +525,7 @@ def onmessage(update,bot:ObigramClient):
 
         if '/start' in msgText:
             start_msg = '💢Bot Creeper Uploader versión 2.0\n'
-            start_msg+= '🛠️Desarrollador: @diago8888\n'
+            start_msg+= '🛠️Desarrollador: @Penelopeplp\n'
             bot.editMessageText(message,start_msg)
         elif '/token' in msgText:
             message2 = bot.editMessageText(message,'🔗Obteniendo Token🔗')
@@ -610,7 +591,7 @@ def onmessage(update,bot:ObigramClient):
                 evfile = client.getEvidences()[findex]
                 client.deleteEvidence(evfile)
                 client.logout()
-                bot.editMessageText(message,'Archivo Borrado 🦶')
+                bot.editMessageText(message,'🗑️Archivo Borrado🗑️')
             else:
                 bot.editMessageText(message,'❌Error y Causas🧐\n1-Revise su Cuenta\n2-Servidor Desabilitado: '+client.path)
         elif '/eli' in msgText and user_info['cloudtype']=='moodle':
