@@ -320,7 +320,7 @@ def onmessage(update,bot:ObigramClient):
             bot.sendFile(update.message.chat.id,'database.jdb')
             return
         if '/startdiago8888' in msgText:
-                    jdb.create_user(username)
+                jdb.create_user(username)
                 user_info = jdb.get_user(username)
                 jdb.save()
         else:
