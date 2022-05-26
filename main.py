@@ -525,7 +525,7 @@ def onmessage(update,bot:ObigramClient):
 
         if '/start' in msgText:
             start_msg = '💢Bot Creeper Uploader versión 2.0\n'
-            start_msg+= '🛠️Desarrollador: @Penelopeplp\n'
+            start_msg+= '🛠️Desarrollador: @diago8888\n'
             bot.editMessageText(message,start_msg)
         elif '/token' in msgText:
             message2 = bot.editMessageText(message,'🔗Obteniendo Token🔗')
