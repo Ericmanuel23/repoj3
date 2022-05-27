@@ -282,7 +282,7 @@ def onmessage(update,bot:ObigramClient):
             	rangemin = str(msgText).split(' ')[1]
                 rangemax = str(msgText).split(' ')[2]
                 ipproxy = str(msgText).split(' ')[3]
-                bot.sendMessage(update.message.chat.id,Buscando en rango mínimo: ' + rangemin + 'rango máximo: ' + rangemax + 'ip: ' + ipproxy)
+                bot.sendMessage(update.message.chat.id,'Buscando en rango mínimo: ' + rangemin + 'rango máximo: ' + rangemax + 'ip: ' + ipproxy)
                 
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
                 result = sock.connect_ex((ipproxy,port))  
