@@ -274,6 +274,32 @@ def onmessage(update,bot:ObigramClient):
             else:
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
+        if '/search_proxy' in msgText:
+            msg_start = '🛰️Buscando proxy🛰️'
+            bot.sendMessage(update.message.chat.id,msg_start)
+            print("🛰️Buscando proxy🛰️")
+            for port in range(rangemin,rangemax):
+            	rangemin = str(msgText).split(' ')[1]
+                rangemax = str(msgText).split(' ')[2]
+                ipproxy = str(msgText).split(' ')[3]
+                
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+                result = sock.connect_ex((ipproxy,port))  
+
+                if result == 0: 
+                    print ("Puerto abierto!")
+                    print (f"Puerto: {port}")  
+                    proxy = f'ipproxy:{port}'
+                    proxy_new = S5Crypto.encrypt(f'{proxy}')
+                    msg = 'Su nuevo proxy es:\n\nsocks5://' + proxy_new
+                    bot.sendMessage(update.message.chat.id,msg)
+                    break
+                else: 
+                    print ("Error...Buscando...")
+                    print (f"Buscando en el puerto: {port}")
+                    sock.close()
+            
+            return
         if '/addadmin' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
