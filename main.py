@@ -523,9 +523,7 @@ def onmessage(update,bot:ObigramClient):
 
         thread.store('msg',message)
 
-        if '/start' in msgText:
-        	        reply_markup=InlineKeyboardMarkup([ 
-         [InlineKeyboardButton(text=c_AAnimeS3, url=url_c_AAnimeS3)]]))
+        if '/start' in msgText:       	        
             start_msg = '💢Bot Creeper Uploader versión 2.0\n'
             start_msg+= '🛠️Desarrollador: @diago8888\n'
             bot.editMessageText(message,start_msg)
