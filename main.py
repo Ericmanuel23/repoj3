@@ -349,6 +349,12 @@ def onmessage(update,bot:ObigramClient):
             proxy = S5Crypto.encrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'🔒Proxy encryptado🔒:\n{proxy}')
             return            
+        if '/suma' in msgText:
+            numero1 = str(msgText).split(' ')[1]
+            numero2 = str(msgText).split(' ')[2]
+            result = numero1 + numero2
+            bot.sendMessage(update.message.chat.id,result)
+            return            
         if '/decrypt' in msgText:
             proxy_sms = str(msgText).split(' ')[1]
             proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
