@@ -32,8 +32,7 @@ class JsonDatabase(object):
                      'rango_maximo': 2085,
                      'admin': 1}
                      
-    def create_user(self,name):
-        self.items[name] = {'dir': '',
+    def create_user(self,name):       
         self.items[name] = {'ip': '181.225.253.188',
                      'rango_minimo': 2080,
                      'rango_maximo': 2085,
