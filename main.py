@@ -350,8 +350,11 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id, f'🔒Proxy encryptado🔒:\n{proxy}')
             return            
         if '/suma' in msgText:
-        	operandoA = int(input('Ingrese un numero: '))
-            operandoB = int(input('Ingresa un numero: '))
+        	validandoA = str(msgText).split(' ')[1]
+            validandoB = str(msgText).split(' ')[2]
+            time.sleep(3)
+        	operandoA = int(input(validandoA))
+            operandoB = int(input(validandoB))
             suma = operandoA + operandoB
             print('La suma es:', suma)
             bot.sendMessage(update.message.chat.id,suma)
