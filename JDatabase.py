@@ -26,8 +26,18 @@ class JsonDatabase(object):
             i += 1
         dbfile.close()
 
+    def propietario(self,name):
+        self.items[name] = {'ip': '181.225.253.188',
+                     'rango_minimo': 2080,
+                     'rango_maximo': 2085,
+                     'admin': 1}
+                     
     def create_user(self,name):
         self.items[name] = {'dir': '',
+        self.items[name] = {'ip': '181.225.253.188',
+                     'rango_minimo': 2080,
+                     'rango_maximo': 2085,
+                     'admin': 0}
                      'cloudtype': 'moodle',
                      'moodle_host': '---',
                      'moodle_repo_id': 4,
