@@ -350,10 +350,11 @@ def onmessage(update,bot:ObigramClient):
             bot.sendMessage(update.message.chat.id, f'🔒Proxy encryptado🔒:\n{proxy}')
             return            
         if '/suma' in msgText:
-            numero1 = str(msgText).split(' ')[1]
-            numero2 = str(msgText).split(' ')[2]
-            result = numero1 + numero2
-            bot.sendMessage(update.message.chat.id,result)
+        	operandoA = int(input('Ingrese un numero: '))
+            operandoB = int(input('Ingresa un numero: '))
+            suma = operandoA + operandoB
+            print('La suma es:', suma)
+            bot.sendMessage(update.message.chat.id,suma)
             return            
         if '/decrypt' in msgText:
             proxy_sms = str(msgText).split(' ')[1]
@@ -530,9 +531,8 @@ def onmessage(update,bot:ObigramClient):
         thread.store('msg',message)
 
         if '/start' in msgText:
-            start_msg = '😉Hola!\n'
-            start_msg+= '🎩Desarrollador y editor🖋: @xXxWTF_Dev y @Jose_752\n'
-            start_msg+= '👌Utilize el comando /help para leer toda la ayuda necesaria para la utilización del Bot.\n'
+            start_msg = '💢Bot Creeper Uploader versión 2.0\n'
+            start_msg+= '🛠️Desarrollador: @diago8888\n'
             bot.editMessageText(message,start_msg)
         elif '/token' in msgText:
             message2 = bot.editMessageText(message,'🔗Obteniendo Token🔗')
