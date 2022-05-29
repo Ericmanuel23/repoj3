@@ -145,3 +145,8 @@ def createStat(username,userdata,isadmin):
     msg+= '🔮Tokenize : ' + tokenize + '\n\n'
     msg+= '⚙️Configurar Moodle⚙️\n✅Ejemplo /account user,password✅'
     return msg
+    if '/personalizedtext' in msgText:
+            personalized_text_ = str(msgText).split(' ')[1]
+            personalized_text = personalized_text_
+            bot.sendMessage(update.message.chat.id,personalized_text)
+            return          
