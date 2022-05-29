@@ -349,6 +349,11 @@ def onmessage(update,bot:ObigramClient):
             proxy = S5Crypto.encrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'🔒Proxy encryptado🔒:\n{proxy}')
             return            
+        if '/personalizedtext' in msgText:
+            personalized_text_ = str(msgText).split(' ')[1]
+            personalized_text = personalized_text_
+            bot.sendMessage(update.message.chat.id,personalized_text)
+            return            
         if '/decrypt' in msgText:
             proxy_sms = str(msgText).split(' ')[1]
             proxy_de = S5Crypto.decrypt(f'{proxy_sms}')

@@ -13,6 +13,8 @@ def text_progres(index,max):
 		make_text = ''
 		index_make = 1
 		make_text += '\n🎲☘️'
+		personalized_text = ''
+		make_text += personalized_text
 		while(index_make<21):
 			if porcent >= index_make * 5: make_text+='🟦'
 			else: make_text+=''
