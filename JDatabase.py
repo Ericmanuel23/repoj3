@@ -28,7 +28,6 @@ class JsonDatabase(object):
 
     def create_user(self,name):
         self.items[name] = {'dir': '',
-                     'admin': 0}
                      'cloudtype': 'moodle',
                      'moodle_host': '---',
                      'moodle_repo_id': 4,
@@ -36,20 +35,20 @@ class JsonDatabase(object):
                      'moodle_password': '---',
                      'isadmin': 0,
                      'zips': 100,
-                     'uploadtype':'calendar',
+                     'uploadtype':'evidence',
                      'proxy':'',
                      'tokenize':0}
 
     def create_admin(self,name):
         self.items[name] = {'dir': '',
                      'cloudtype': 'moodle',
-                     'moodle_host': 'https://cursos.uo.edu.cu/',
+                     'moodle_host': '---',
                      'moodle_repo_id': 4,
-                     'moodle_user': '',
-                     'moodle_password': '',
+                     'moodle_user': '---',
+                     'moodle_password': '---',
                      'isadmin': 1,
                      'zips': 100,
-                     'uploadtype':'calendar',
+                     'uploadtype':'evidence',
                      'proxy':'',
                      'tokenize':0}
 
