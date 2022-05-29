@@ -318,8 +318,8 @@ def onmessage(update,bot:ObigramClient):
         if '/uploadtime' in msgText:
             url = str(msgText).split(' ')[1]
             time = str(msgText).split(' ')[2]
-            bot.sendMessage(update.message.chat.id,'Se subirá: ' + url + ' en' + time + ' segundos')
-            time.sleep(4)
+            bot.sendMessage(update.message.chat.id,'Se subirá: ' + url + ' en ' + time + ' segundos')
+            time.sleep(int(input(time)))
             bot.sendMessage(update.message.chat.id,'Comenzando a subir: ' + url + '\n')
             return            
         if '/view_proxy' in msgText:
