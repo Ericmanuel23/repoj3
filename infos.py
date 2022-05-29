@@ -12,14 +12,14 @@ def text_progres(index,max):
 		porcent = round(porcent)
 		make_text = ''
 		index_make = 1
-		make_text += '\n🎲☘️'
-		personalized_text = ''
+		personalized_text = '\n🎲☘️'
 		make_text += personalized_text
 		while(index_make<21):
 			if porcent >= index_make * 5: make_text+='🟦'
 			else: make_text+=''
 			index_make+=1
-		make_text += '🍀🎲\n'
+		personalized_text2 = '\n🎲☘️'
+		make_text += personalizedtext2
 		return make_text
 	except Exception as ex:
 			return ''
