@@ -1,4 +1,3 @@
-@@ -0,0 +1,130 @@
 import threading
 import urllib
 from tkinter import *
