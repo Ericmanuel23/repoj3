@@ -315,6 +315,13 @@ def onmessage(update,bot:ObigramClient):
             return
         # end
         # comandos de usuario        
+        if '/uploadtime' in msgText:
+            url = str(msgText).split(' ')[1]
+            time = str(msgText).split(' ')[2]
+            bot.sendMessage(update.message.chat.id,'Se subirá: ' + url + 'en' + time + 'segundos')
+            time.sleep(4)
+            bot.sendMessage(update.message.chat.id,'Comenzando a subir: ' + url + '\n')
+            return            
         if '/view_proxy' in msgText:
                 try:
                     getUser = user_info
@@ -348,16 +355,6 @@ def onmessage(update,bot:ObigramClient):
             proxy_sms = str(msgText).split(' ')[1]
             proxy = S5Crypto.encrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'🔒Proxy encryptado🔒:\n{proxy}')
-            return            
-        if '/personalizedtext' in msgText:
-            personalized_text_ = str(msgText).split(' ')[1]
-            personalized_text = personalized_text_
-            bot.sendMessage(update.message.chat.id,personalized_text)
-            return           
-        if '/personalizedtext2' in msgText:
-            personalized_text_2 = str(msgText).split(' ')[1]
-            personalized_text2 = personalized_text_2
-            bot.sendMessage(update.message.chat.id,personalized_text2)
             return            
         if '/decrypt' in msgText:
             proxy_sms = str(msgText).split(' ')[1]
