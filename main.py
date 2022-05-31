@@ -228,9 +228,11 @@ def onmessage(update,bot:ObigramClient):
         thread = bot.this_thread
         username = update.message.sender.username
         tl_admin_user = os.environ.get('tl_admin_user')
+        bot_group = os.environ.get('bot_group')
 
         #set in debug
         #tl_admin_user = 'diago8888'
+        #bot_group = '-1001590309863'
 
         jdb = JsonDatabase('database')
         jdb.check_create()
@@ -248,6 +250,7 @@ def onmessage(update,bot:ObigramClient):
                 user_info = jdb.get_user(username)
                 jdb.save()
         else:
+        	#poner al bot de admin en el canal
             mensaje = "❌No tienes Acceso❌.\nPor favor contacta con mi programador @diago8888\n"
             intento_msg = "💢El usuario @"+username+ " ha intentando usar el bot sin permiso💢"
             bot.sendMessage(update.message.chat.id,mensaje)
