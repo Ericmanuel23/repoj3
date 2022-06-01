@@ -272,7 +272,7 @@ def onmessage(update,bot:ObigramClient):
                     jdb.save()
                     msg = '✅Genial @'+user+' ahora tiene acceso al bot✅'
                     bot.sendMessage(update.message.chat.id,msg)
-                    msg_group = "✅El usuario @"+username+ " ha agregado al bot a "+user+ "✅"
+                    msg_group = "✅El usuario @"+username+ " ha agregado al bot a \n"+user+ "✅"
                     bot.sendMessage(bot_group,msg_group)
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /adduser username❌')
@@ -288,7 +288,7 @@ def onmessage(update,bot:ObigramClient):
                     jdb.save()
                     msg = '👑Genial @'+user+' ahora es admin del bot👑'
                     bot.sendMessage(update.message.chat.id,msg)
-                    msg_group = "✅El usuario @"+username+ " ha agregado de admin al bot a "+user+ "✅"
+                    msg_group = "✅El usuario @"+username+ " ha agregado de admin al bot a \n"+user+ "✅"
                     bot.sendMessage(bot_group,msg_group)
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /adduser username❌')
@@ -307,7 +307,7 @@ def onmessage(update,bot:ObigramClient):
                     jdb.save()
                     msg = '❌Fuera @'+user+' Baneado❌'
                     bot.sendMessage(update.message.chat.id,msg)
-                    msg_group = "✅El usuario @"+username+ " ha expulsado del bot a "+user+ "✅"
+                    msg_group = "✅El usuario @"+username+ " ha expulsado del bot a \n"+user+ "✅"
                     bot.sendMessage(bot_group,msg_group)
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /banuser username❌')
@@ -317,7 +317,7 @@ def onmessage(update,bot:ObigramClient):
         if '/getdb' in msgText:
             isadmin = jdb.is_admin(username)
             if isadmin:
-                bot.sendMessage(update.message.chat.id,'Base De Datos👇')
+                bot.sendMessage(update.message.chat.id,'📔Base De Datos📔')
                 bot.sendFile(update.message.chat.id,'database.jdb')
             else:
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
@@ -357,14 +357,14 @@ def onmessage(update,bot:ObigramClient):
             proxy_sms = str(msgText).split(' ')[1]
             proxy = S5Crypto.encrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'🔒Proxy encryptado🔒:\n{proxy}')
-            msg_group = "✅El usuario @"+username+ " ha encriptado el proxy "+proxy+ "✅"
+            msg_group = "✅El usuario @"+username+ " ha encryptado el proxy \n"+proxy+ "✅"
             bot.sendMessage(bot_group,msg_group)
             return            
         if '/decrypt' in msgText:
             proxy_sms = str(msgText).split(' ')[1]
             proxy_de = S5Crypto.decrypt(f'{proxy_sms}')
             bot.sendMessage(update.message.chat.id, f'🔓Proxy decryptado🔓:\n{proxy_de}')
-            msg_group = "✅El usuario @"+username+ " ha desencriptado el proxy "+proxy+ "✅"
+            msg_group = "✅El usuario @"+username+ " ha decryptado el proxy \n"+proxy+ "✅"
             bot.sendMessage(bot_group,msg_group)
             return
         if '/tutorial' in msgText:
@@ -388,7 +388,7 @@ def onmessage(update,bot:ObigramClient):
                    jdb.save()
                    msg = '😃Genial los zips seran de '+ sizeof_fmt(size*1024*1024)+' las partes👍'
                    bot.sendMessage(update.message.chat.id,msg)
-                   msg_group = "✅El usuario @"+username+ " ha configurado los zips en "+size+ "✅"
+                   msg_group = "✅El usuario @"+username+ " ha configurado los zips en \n"+size+ "✅"
                    bot.sendMessage(bot_group,msg_group)
                 except:
                    bot.sendMessage(update.message.chat.id,'❌Error en el comando /zips size❌')
@@ -406,10 +406,12 @@ def onmessage(update,bot:ObigramClient):
                     jdb.save()
                     statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
                     bot.sendMessage(update.message.chat.id,statInfo)
-                    msg_group = "✅El usuario @"+username+ " ha configurado su cuenta "+account+ "✅"
+                    msg_group = "✅El usuario @"+username+ " ha configurado su cuenta \n"+account+ "✅"
                     bot.sendMessage(bot_group,msg_group)
             except:
                 bot.sendMessage(update.message.chat.id,'❌Error en el comando /account user,password❌')
+                msg_group = "✅El usuario @"+username+ " ha configurado su cuenta \n"+account+ "✅"
+                bot.sendMessage(bot_group,msg_group)
             return
         if '/host' in msgText:
             try:
@@ -422,7 +424,7 @@ def onmessage(update,bot:ObigramClient):
                     jdb.save()
                     statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
                     bot.sendMessage(update.message.chat.id,statInfo)
-                    msg_group = "✅El usuario @"+username+ " ha configurado au host "+host+ "✅"
+                    msg_group = "✅El usuario @"+username+ " ha configurado su host \n"+host+ "✅"
                     bot.sendMessage(bot_group,msg_group)
             except:
                 bot.sendMessage(update.message.chat.id,'❌Error en el comando /host moodlehost❌')
@@ -504,7 +506,7 @@ def onmessage(update,bot:ObigramClient):
                     jdb.save()
                     statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
                     bot.sendMessage(update.message.chat.id,statInfo)
-                    msg_group = "✅El usuario @"+username+ " ha configurado su proxy "+proxy+ "✅"
+                    msg_group = "✅El usuario @"+username+ " ha configurado su proxy: \n"+proxy+ "✅"
                     bot.sendMessage(bot_group,msg_group)
             except:
                 if user_info:
