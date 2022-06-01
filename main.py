@@ -307,7 +307,7 @@ def onmessage(update,bot:ObigramClient):
                     jdb.save()
                     msg = '❌Fuera @'+user+' Baneado❌'
                     bot.sendMessage(update.message.chat.id,msg)
-                    msg_group = "✅El usuario @"+username+ " ha expulsado del bot a \n"+user+ "
+                    msg_group = "✅El usuario @"+username+ " ha expulsado del bot a \n"+user"
                     bot.sendMessage(bot_group,msg_group)
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /banuser username❌')
