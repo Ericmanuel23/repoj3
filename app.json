@@ -7,7 +7,7 @@
       "value": ""
     },
     "bot_group": {
-      "description": "El grupo donde el bot mandara los mensajes",
+      "description": "El grupo del bot",
       "value": ""
     },
     "bot_token": {
