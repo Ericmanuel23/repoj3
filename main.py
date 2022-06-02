@@ -269,7 +269,7 @@ def onmessage(update,bot:ObigramClient):
                     jdb.save()
                     msg = '✅Genial @'+user+' ahora tiene acceso al bot✅'
                     bot.sendMessage(update.message.chat.id,msg)
-                    msg_group = "💢El usuario @"+username+ "ha agregado al bot a: \n"+user"
+                    msg_group = "💢El usuario @"+username+ "ha agregado al bot a: \n"+user+ "✅"
                     bot.sendMessage(bot_group,msg_group)
                 except:
                     bot.sendMessage(update.message.chat.id,'❌Error en el comando /adduser username❌')
