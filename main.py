@@ -328,8 +328,8 @@ def onmessage(update,bot:ObigramClient):
         # end
         # comandos de usuario     
         if '/numer_random' in msgText:
-        	number_min = str(msgText).split(' ')[1]
-            number_max = str(msgText).split('-')[2]
+        	number_min = '1'
+            number_max = '10'
             number = random.randint(number_min, number_max)            
             print("✅El número que salió fue✅", number)
             bot.sendMessage(update.message.chat.id,'✅El número que salió fue✅\n\n'+ number+'')     
