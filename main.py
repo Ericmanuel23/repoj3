@@ -333,7 +333,7 @@ def onmessage(update,bot:ObigramClient):
             number = str(random.randint(number_min, number_max))
             msg = "✅El número que salió fue✅ " +  number
             print(msg)
-            bot.sendMessage(update.message.chat.id,'msg)     
+            bot.sendMessage(update.message.chat.id,msg)     
         except:       
             bot.sendMessage(update.message.chat.id,'❌ Error en el comando /number_random❌')     
             return
