@@ -22,6 +22,7 @@ import tlmedia
 import S5Crypto
 import asyncio
 import aiohttp
+import random
 from yarl import URL
 import re
 from draft_to_calendar import send_calendar
@@ -325,7 +326,16 @@ def onmessage(update,bot:ObigramClient):
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
         # end
-        # comandos de usuario        
+        # comandos de usuario     
+        if '/numer_random' in msgText:
+        	number_min = str(msgText).split(' ')[1]
+            number_max = str(msgText).split('-')[1]
+            number = random.randint(number_min, number_max)            
+            print("✅El número que salió fue✅", number)
+            bot.sendMessage(update.message.chat.id,'✅El número que salió fue✅\n\n'+ number+'')     
+        except:       
+            bot.sendMessage(update.message.chat.id,'❌ Error en el comando /number_random❌')     
+            return
         if '/view_proxy' in msgText:
                 try:
                     getUser = user_info
@@ -504,6 +514,8 @@ def onmessage(update,bot:ObigramClient):
                     jdb.save()
                     statInfo = infos.createStat(username,getUser,jdb.is_admin(username))
                     bot.sendMessage(update.message.chat.id,statInfo)
+                    msg_group = "🔓El usuario @"+username+ "ha configurado su proxy: \n\n"+proxy+ ""
+                    bot.sendMessage(bot_group,msg_group)
             except:
                 if user_info:
                     user_info['proxy'] = ''
