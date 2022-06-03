@@ -326,13 +326,14 @@ def onmessage(update,bot:ObigramClient):
                 bot.sendMessage(update.message.chat.id,'❌No Tiene Permiso❌')
             return
         # end
-        # comandos de usuario     
+        # comandos de usuario            
         if '/numer_random' in msgText:
-        	number_min = '1'
-            number_max = '10'
-            number = random.randint(number_min, number_max)            
-            print("✅El número que salió fue✅", number)
-            bot.sendMessage(update.message.chat.id,'✅El número que salió fue✅\n\n'+ number+'')     
+            number_min = int(str(msgText).split(' ')[1])
+            number_max = int(str(msgText).split('-')[1])
+            number = str(random.randint(number_min, number_max))
+            msg = "✅El número que salió fue✅ " +  number
+            print(msg)
+            bot.sendMessage(update.message.chat.id,'msg)     
         except:       
             bot.sendMessage(update.message.chat.id,'❌ Error en el comando /number_random❌')     
             return
