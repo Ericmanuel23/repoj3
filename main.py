@@ -228,9 +228,12 @@ def onmessage(update,bot:ObigramClient):
         thread = bot.this_thread
         username = update.message.sender.username
         tl_admin_user = os.environ.get('tl_admin_user')
+        #poner de admin del grupo al bot
+        bot_group = os.environ.get('bot_group')
 
         #set in debug
         #tl_admin_user = 'diago8888'
+        #bot_group = '-1001590309863'
 
         jdb = JsonDatabase('database')
         jdb.check_create()
@@ -669,8 +672,7 @@ def onmessage(update,bot:ObigramClient):
 
 
 def main():
-    bot_token = os.environ.get('bot_token')
-    bot_group = os.environ.get('bot_group')
+    bot_token = os.environ.get('bot_token')   
 
     #set in debug
     #bot_token = ''
