@@ -334,8 +334,6 @@ def onmessage(update,bot:ObigramClient):
             msg = "✅El número que salió fue✅ " +  number
             print(msg)
             bot.sendMessage(update.message.chat.id,msg)     
-        except:       
-            bot.sendMessage(update.message.chat.id,'❌ Error en el comando /number_random❌')     
             return
         if '/view_proxy' in msgText:
                 try:
