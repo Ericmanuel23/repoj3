@@ -112,7 +112,7 @@ def processUploadFiles(filename,filesize,files,update,bot,message,thread=None,jd
                           iter += 1
                           if iter>=10:
                               break
-                    os.unlink(f)
+                    os.unlink(f)⁸
                 if user_info['uploadtype'] == 'evidence':
                     try:
                         client.saveEvidence(evidence)
@@ -233,7 +233,7 @@ def onmessage(update,bot:ObigramClient):
         bot_group = os.environ.get('bot_group')
 
         #set in debug
-        #tl_admin_user = 'diago8888'
+        #tl_admin_user = 'ericZAYAS'
         #bot_group = '-1001590309863'
 
         jdb = JsonDatabase('database')
